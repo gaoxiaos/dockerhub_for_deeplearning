@@ -8,6 +8,11 @@
 1.git clone [https://github.com/gaoxiaos/dockerhub_for_deeplearning.git](https://github.com/gaoxiaos/dockerhub_for_deeplearning.git)<br />2.cd [dockerhub_for_deeplearning](https://github.com/gaoxiaos/dockerhub_for_deeplearning.git)/pytorch<br />3.vim Dockerfile<br />4.docker build -t yourimage:0.1 .<br />
 ## <br />自动构建镜像链接（版本号默认为latest）：
 <br />命名方式参见“天池镜像仓库”，传送门：[https://tianchi.aliyun.com/forum/postDetail?postId=67720](https://tianchi.aliyun.com/forum/postDetail?postId=67720)<br />如registry.cn-shanghai.aliyuncs.com/tcc-public/实物名：实物版本号-cuda版本号-python版本号<br />
+## 自动打包镜像工具包
+下载自动打包镜像工具包，下载链接：http://tianchi-media.oss-cn-beijing.aliyuncs.com/docker-tool/tianchi_docker.zip
+解压zip包，仅需用记事本打开Dockerfile按需修改配置，并把main.py替换为自己的代码（或将解压后的文件放置于你工程所在目录），然后执行sh docker_build.sh 即可
+
+E.g: sh docker_build.sh 0.1  （0.1为自己指定的版本号）
 ## <br />简单的使用方法：<br />
 `FROM registry.cn-shanghai.aliyuncs.com/tcc-public/python:3`<br />`##安装依赖包,pip包请在requirements.txt添加`<br />`RUN pip install --no-cache-dir -r requirements.txt -i `[`https://pypi.tuna.tsinghua.edu.cn/simple`](https://pypi.tuna.tsinghua.edu.cn/simple)<br />`## 把当前文件夹里的文件构建到镜像的根目录下,并设置为默认工作目录`<br />`ADD . /`<br />`WORKDIR /`<br />`## 镜像启动后统一执行 sh run.sh`<br />`CMD ["sh", "run.sh"]`<br />
 ## <br />链接：<br />
